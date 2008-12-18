@@ -16,7 +16,8 @@ set :branch, "master"
 set :deploy_to, "/var/www/#{application}"
 
 task :production do
-  set_role_for_all_instances(:app, :app)
+  # set_role_for_all_instances(:app, :app)
+  role :app, get_cloud(:app).ip
   set :user, get_cloud(:app).user
 end
 
