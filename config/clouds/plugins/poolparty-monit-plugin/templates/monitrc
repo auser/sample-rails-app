@@ -1,0 +1,9 @@
+set daemon  60
+set logfile syslog facility log_daemon
+set mailserver localhost
+set mail-format { from: monit@poolpartyserver.com }
+set alert root@localhost
+set httpd port 2812 and
+     SSL ENABLE
+     PEMFILE  /var/certs/monit.pem
+     allow admin:poolparty

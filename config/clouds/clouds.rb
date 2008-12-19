@@ -10,8 +10,10 @@ pool :cb do
     contract_when "cpu < 0.50"
     
     rails
+    
     mysql do
-      install      
+      install
+      install_client
       has_database(:name => "demo_production", :user => "demo", :password => "demo")
     end
     

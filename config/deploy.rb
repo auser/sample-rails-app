@@ -1,4 +1,4 @@
-$:.unshift "/Users/auser/Sites/work/citrusbyte/internal/gems/pool-party/poolparty/lib"
+# $:.unshift "/Users/auser/Sites/work/citrusbyte/internal/gems/pool-party/poolparty/lib"
 require "poolparty/capistrano"
 # require "clouds/clouds"
 require "/Users/auser/Desktop/preso/demo/config/clouds/clouds"
