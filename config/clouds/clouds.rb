@@ -10,9 +10,15 @@ pool :cb do
     contract_when "cpu < 0.50"
     
     rails
+    mysql do
+      install
+      has_database(:name => "demo_production", :user => "demo", :password => "demo")
+    end
     image_science
     git
-        
+    
+    has_rsyncmirror(:name => "/var/www/demo/current")
+    
     apache do
       installed_as_worker
       has_passengersite do

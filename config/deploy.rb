@@ -16,17 +16,20 @@ set :branch, "master"
 set :deploy_to, "/var/www/#{application}"
 
 task :production do
-  # set_role_for_all_instances(:app, :app)
-  role :app, get_cloud(:app).ip
+  set_role_for_all_instances(:app, :app)
+  # role :app, get_cloud(:app).ip
   set :user, get_cloud(:app).user
 end
 
 after "deploy", "chowner"
-# after "deploy:setup", "deploy:setup_database"
+after "deploy:setup", "deploy:setup_database"
 after "deploy:setup_database", "deploy:migrate"
 after "deploy:migrate", "deploy:restart"
 
 namespace(:deploy) do
+  task :setup_database do
+    run "touch #{shared_path}/log/production.log && chmod 0666 #{shared_path}/log/production.log"
+  end
   task :install_rails do
     run "gem install -v=2.1.0 rails --no-rdoc --no-ri"
   end
