@@ -11,9 +11,10 @@ pool :cb do
     
     rails
     mysql do
-      install
+      install      
       has_database(:name => "demo_production", :user => "demo", :password => "demo")
     end
+    
     image_science
     git
     
